@@ -38,24 +38,24 @@ $dbc = new connect();
 
 // }
 
-$s = "SELECT * FROM `theater_infos` WHERE `date` = ''";
-$result = $dbc->select($s);
-$res=$result[0];
+// $s = "SELECT * FROM `theater_infos` WHERE `date` = ''";
+// $result = $dbc->select($s);
+// $res=$result[0];
 
-// 落としたhtmlファイルからDBにインサート
-for($i=1; $i<=149; $i++){
+// // 落としたhtmlファイルからDBにインサート
+// for($i=1; $i<=149; $i++){
 
-        $html = file_get_html("./html/theater_url_".$i.".html");
-        $name = trim($html->find(".m-detailheader-heading__ttl")[0]->plaintext);
-        $info = $html->find("table.m-infotable__table tr.m-infotable__row");
-        $date_sub = trim($info[2]->find(".m-infotable__td")[0]->find(".m-detailmain-table__subtxt")[0]->plaintext);
+//         $html = file_get_html("./html/theater_url_".$i.".html");
+//         $name = trim($html->find(".m-detailheader-heading__ttl")[0]->plaintext);
+//         $info = $html->find("table.m-infotable__table tr.m-infotable__row");
+//         $date_sub = trim($info[2]->find(".m-infotable__td")[0]->find(".m-detailmain-table__subtxt")[0]->plaintext);
 
-        $sql = sprintf("
-            UPDATE `theater_infos`
-            SET `date_sub` = '%s'
-            WHERE `id` = '%s'",
-            $date_sub,
-            $i);
+//         $sql = sprintf("
+//             UPDATE `theater_infos`
+//             SET `date_sub` = '%s'
+//             WHERE `id` = '%s'",
+//             $date_sub,
+//             $i);
 
         // var_dump($sql);
 

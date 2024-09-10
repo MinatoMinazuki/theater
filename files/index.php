@@ -24,7 +24,13 @@
                     type: "POST",
                     data: { title: title},
                     success: function(res){
-                        $("#response").text(response);
+
+                        var title = JSON.parse(res);
+
+                        for(var i = 0; i < title.length; i++){
+                            console.log(title[i]["name"]);
+                            $("#response").append(title[i]["name"]+"<br>");
+                        }
                     },
                     error: function(xhr, status, error){
                         $("#response").text("エラー："+ error);
