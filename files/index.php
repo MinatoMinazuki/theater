@@ -31,12 +31,15 @@
 
                         var res = JSON.parse(res);
 
-                        if( res["notFound"] === "0" ){
-                            var title = res["title"];
+                        var data = res["data"];
 
-                            for(var i = 0; i < title.length; i++){
-                                console.log(title[i]["name"]);
-                                $("#response").append("<li class='theaterTitle'>"+title[i]["name"]+"</li>");
+                        if( res["notFound"] === "0" ){
+
+                            for(var i = 0; i < data.length; i++){
+                                var id = data[i]["id"],
+                                    title = data[i]["name"];
+
+                                $("#response").append("<li class='theaterTitle'>"+title+"<a href='detail.php?="+id+"'>詳細</a></li>");
                             }
 
                         } else {
@@ -66,7 +69,7 @@
     </div>
     <div class="footer">
         <p>
-            <a href="#">ログイン</a>
+            <a href="regiInfo.php">公演情報の登録</a>
         </p>
     </div>
 </body>

@@ -4,22 +4,25 @@ require_once __DIR__."/../class/PDOC.php";
 
 $dbc = new connect();
 
-$title = htmlspecialchars($_POST['title'], ENT_QUOTES, "utf-8");
 $result = [];
+$title = htmlspecialchars($_POST['title'], ENT_QUOTES, "utf-8");
 
 $sql = sprintf("
-		SELECT `name`
-		FROM `theater_infos`
-		WHERE `name` LIKE '%%%s%%'",
-		$title
-	);
+        SELECT `id`,
+               `name`
+        FROM `theater_infos`
+        WHERE `name` LIKE '%%%s%%'",
+        $title
+    );
 
 
-$result["title"] = $dbc->select($sql);
+$selResult = $dbc->select($sql);
+
+$result["data"] = $selResult;
 $result["notFound"] = "0";
 
-if( empty($result["title"]) ){
-	$result["notFound"] = "1";
+if( empty($result["data"]) ){
+    $result["notFound"] = "1";
 }
 
 echo json_encode($result);
