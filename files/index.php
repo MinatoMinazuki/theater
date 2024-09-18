@@ -39,7 +39,7 @@
                                 var id = data[i]["id"],
                                     title = data[i]["name"];
 
-                                $("#response").append("<li class='theaterTitle'>"+title+"<a href='detail.php?="+id+"'>詳細</a></li>");
+                                $("#response").append("<li class='theaterTitle'>"+title+"<a href='detail.php?="+id+"' class='detailLink'>詳細</a></li>");
                             }
 
                         } else {
